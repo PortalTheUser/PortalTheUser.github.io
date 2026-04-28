@@ -21,11 +21,19 @@
     box-shadow: 5px 0 15px rgba(0,0,0,0.4);
     display: flex;
     flex-direction: column;
+    transition: width 0.3s ease;
+    overflow: hidden;
   }
 
-  .sidebar h2 {
+  .sidebar.collapsed {
+    width: 70px;
+  }
+
+  .menu-toggle {
     font-size: 18px;
     margin-bottom: 20px;
+    cursor: pointer;
+    user-select: none;
   }
 
   .sidebar a {
@@ -36,6 +44,7 @@
     margin-bottom: 8px;
     display: block;
     transition: 0.2s;
+    white-space: nowrap;
   }
 
   .sidebar a:hover {
@@ -49,12 +58,18 @@
     margin: 15px 0;
   }
 
-  /* MAIN CONTENT */
+  /* esconder texto quando colapsado */
+  .sidebar.collapsed a span {
+    display: none;
+  }
+
+  /* MAIN */
   .main {
     flex: 1;
     display: flex;
     justify-content: center;
     align-items: center;
+    transition: 0.3s;
   }
 
   .container {
@@ -136,23 +151,22 @@
 <body>
 
 <!-- SIDEBAR -->
-<div class="sidebar">
-  <h2>Menu</h2>
+<div class="sidebar" id="sidebar">
+  <div class="menu-toggle" onclick="toggleSidebar()">☰ Menu</div>
 
-  <a href="#">Players</a>
-  <a href="#">Asset Moderation</a>
-  <a href="#">Asset Revisation</a>
+  <a href="#"><span>Players</span></a>
+  <a href="#"><span>Asset Moderation</span></a>
+  <a href="#"><span>Asset Revisation</span></a>
 
   <div class="divider"></div>
 
-  <a href="#">Settings</a>
+  <a href="#"><span>Settings</span></a>
 </div>
 
-<!-- MAIN CONTENT -->
+<!-- MAIN -->
 <div class="main">
   <div class="container">
 
-    <!-- Account Actions -->
     <div class="panel">
       <h2>Account Actions</h2>
 
@@ -164,7 +178,6 @@
       <button class="btn dark">Verify User</button>
     </div>
 
-    <!-- Robux Manager -->
     <div class="panel">
       <h2>Robux/Tix Manager</h2>
 
@@ -182,6 +195,12 @@
 
   </div>
 </div>
+
+<script>
+  function toggleSidebar() {
+    document.getElementById("sidebar").classList.toggle("collapsed");
+  }
+</script>
 
 </body>
 </html>
