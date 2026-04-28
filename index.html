@@ -13,6 +13,7 @@ body {
   color: #fff;
 }
 
+/* SIDEBAR */
 .sidebar {
   width: 230px;
   height: 100vh;
@@ -39,11 +40,13 @@ body {
   color: #fff;
 }
 
+/* MAIN */
 .main {
   flex: 1;
   padding: 20px;
 }
 
+/* PROFILE CARD */
 .profile {
   background: linear-gradient(180deg, #2b2b2b, #1c1c1c);
   padding: 20px;
@@ -71,12 +74,14 @@ body {
 .admin { background: orange; }
 .ok { background: #2ecc71; }
 
+/* GRID */
 .grid {
   display: grid;
   grid-template-columns: 2fr 1fr;
   gap: 20px;
 }
 
+/* PANELS */
 .panel {
   background: linear-gradient(180deg, #2b2b2b, #1c1c1c);
   padding: 20px;
@@ -88,6 +93,7 @@ body {
   margin-bottom: 10px;
 }
 
+/* SUMMARY BOX */
 .summary-box {
   background: #204a4a;
   padding: 10px;
@@ -95,6 +101,7 @@ body {
   margin-bottom: 15px;
 }
 
+/* INFO GRID */
 .info {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -109,6 +116,7 @@ body {
   font-size: 13px;
 }
 
+/* BUTTONS */
 .btn {
   width: 100%;
   padding: 10px;
@@ -124,6 +132,7 @@ body {
 
 .btn:hover { opacity: 0.9; }
 
+/* INPUT */
 .input {
   width: 100%;
   padding: 10px;
@@ -138,6 +147,7 @@ body {
 
 <body>
 
+<!-- SIDEBAR -->
 <div class="sidebar">
   <h3>DASHBOARD</h3>
   <a href="#">Home</a>
@@ -155,23 +165,23 @@ body {
   <a href="#">Assets</a>
 </div>
 
+<!-- MAIN -->
 <div class="main">
 
+  <!-- PROFILE -->
   <div class="profile">
     <div class="avatar"></div>
     <div>
-      <input id="userInput" class="input" placeholder="Enter User ID (ex: 1)">
-      <button onclick="loadUser()" class="btn green" style="margin-top:10px;">Load User</button>
-
-      <h2 id="username">Waiting...</h2>
-      <span id="role" class="badge admin">...</span>
-      <span id="status" class="badge ok">...</span>
-      <p id="profileLink" style="color:#aaa; font-size:12px;"></p>
+      <h2>PortalTheUser</h2>
+      <span class="badge admin">Admin</span>
+      <span class="badge ok">Account OK</span>
+      <p style="color:#aaa; font-size:12px;">View ROBLOX Profile</p>
     </div>
   </div>
 
   <div class="grid">
 
+    <!-- LEFT -->
     <div class="panel">
       <h2>User Summary</h2>
 
@@ -180,9 +190,9 @@ body {
       </div>
 
       <div class="info">
-        <div>Joined<br><b id="joined">N/A</b></div>
-        <div>Last Online<br><b id="lastOnline">N/A</b></div>
-        <div>Currency<br><b id="currency">0</b></div>
+        <div>Joined<br><b>4 months ago</b></div>
+        <div>Last Online<br><b>few seconds ago</b></div>
+        <div>Currency<br><b>2119 Robux</b></div>
       </div>
 
       <h2>Privacy Settings</h2>
@@ -200,6 +210,7 @@ body {
       </div>
     </div>
 
+    <!-- RIGHT -->
     <div>
 
       <div class="panel">
@@ -229,46 +240,6 @@ body {
   </div>
 
 </div>
-
-<script>
-async function loadUser() {
-  const userId = document.getElementById("userInput").value;
-
-  if (!userId) return;
-
-  try {
-    const res = await fetch("https://www.pekora.zip/apisite/users/v1/users/" + userId);
-    const data = await res.json();
-
-    document.getElementById("username").innerText = data.displayName || data.name || "Unknown";
-
-    if (data.isStaff) {
-      document.getElementById("role").innerText = "Staff";
-      document.getElementById("role").className = "badge admin";
-    } else {
-      document.getElementById("role").innerText = "User";
-      document.getElementById("role").className = "badge ok";
-    }
-
-    document.getElementById("status").innerText = "Account OK";
-    document.getElementById("profileLink").innerText = "User ID: " + data.id;
-
-  } catch (err) {
-    console.error(err);
-
-    document.getElementById("username").innerText = "User not found";
-    document.getElementById("role").innerText = "...";
-    document.getElementById("status").innerText = "...";
-    document.getElementById("profileLink").innerText = "";
-  }
-}
-
-document.getElementById("userInput").addEventListener("keypress", function(e) {
-  if (e.key === "Enter") {
-    loadUser();
-  }
-});
-</script>
 
 </body>
 </html>
