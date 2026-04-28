@@ -160,10 +160,13 @@ body {
   <div class="profile">
     <div class="avatar"></div>
     <div>
-      <h2>PortalTheUser</h2>
-      <span class="badge admin">Admin</span>
-      <span class="badge ok">Account OK</span>
-      <p style="color:#aaa; font-size:12px;">View ROBLOX Profile</p>
+      <input id="userInput" class="input" placeholder="Enter User ID (ex: 1)">
+      <button onclick="loadUser()" class="btn green" style="margin-top:10px;">Load User</button>
+
+      <h2 id="username">Waiting...</h2>
+      <span id="role" class="badge admin">...</span>
+      <span id="status" class="badge ok">...</span>
+      <p id="profileLink" style="color:#aaa; font-size:12px;"></p>
     </div>
   </div>
 
@@ -177,9 +180,9 @@ body {
       </div>
 
       <div class="info">
-        <div>Joined<br><b>4 months ago</b></div>
-        <div>Last Online<br><b>few seconds ago</b></div>
-        <div>Currency<br><b>2119 Robux</b></div>
+        <div>Joined<br><b id="joined">N/A</b></div>
+        <div>Last Online<br><b id="lastOnline">N/A</b></div>
+        <div>Currency<br><b id="currency">0</b></div>
       </div>
 
       <h2>Privacy Settings</h2>
@@ -226,6 +229,46 @@ body {
   </div>
 
 </div>
+
+<script>
+async function loadUser() {
+  const userId = document.getElementById("userInput").value;
+
+  if (!userId) return;
+
+  try {
+    const res = await fetch("https://www.pekora.zip/apisite/users/v1/users/" + userId);
+    const data = await res.json();
+
+    document.getElementById("username").innerText = data.displayName || data.name || "Unknown";
+
+    if (data.isStaff) {
+      document.getElementById("role").innerText = "Staff";
+      document.getElementById("role").className = "badge admin";
+    } else {
+      document.getElementById("role").innerText = "User";
+      document.getElementById("role").className = "badge ok";
+    }
+
+    document.getElementById("status").innerText = "Account OK";
+    document.getElementById("profileLink").innerText = "User ID: " + data.id;
+
+  } catch (err) {
+    console.error(err);
+
+    document.getElementById("username").innerText = "User not found";
+    document.getElementById("role").innerText = "...";
+    document.getElementById("status").innerText = "...";
+    document.getElementById("profileLink").innerText = "";
+  }
+}
+
+document.getElementById("userInput").addEventListener("keypress", function(e) {
+  if (e.key === "Enter") {
+    loadUser();
+  }
+});
+</script>
 
 </body>
 </html>
