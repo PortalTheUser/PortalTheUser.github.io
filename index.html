@@ -7,10 +7,54 @@
   body {
     background: #111;
     font-family: Arial, sans-serif;
+    margin: 0;
+    display: flex;
+  }
+
+  /* SIDEBAR */
+  .sidebar {
+    width: 220px;
+    height: 100vh;
+    background: linear-gradient(180deg, #1f1f1f, #141414);
+    padding: 20px;
+    color: #fff;
+    box-shadow: 5px 0 15px rgba(0,0,0,0.4);
+    display: flex;
+    flex-direction: column;
+  }
+
+  .sidebar h2 {
+    font-size: 18px;
+    margin-bottom: 20px;
+  }
+
+  .sidebar a {
+    text-decoration: none;
+    color: #ccc;
+    padding: 10px;
+    border-radius: 6px;
+    margin-bottom: 8px;
+    display: block;
+    transition: 0.2s;
+  }
+
+  .sidebar a:hover {
+    background: #2a2a2a;
+    color: #fff;
+  }
+
+  .divider {
+    height: 1px;
+    background: #333;
+    margin: 15px 0;
+  }
+
+  /* MAIN CONTENT */
+  .main {
+    flex: 1;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
   }
 
   .container {
@@ -91,36 +135,53 @@
 </head>
 <body>
 
-<div class="container">
+<!-- SIDEBAR -->
+<div class="sidebar">
+  <h2>Menu</h2>
 
-  <!-- Account Actions -->
-  <div class="panel">
-    <h2>Account Actions</h2>
+  <a href="#">Players</a>
+  <a href="#">Asset Moderation</a>
+  <a href="#">Asset Revisation</a>
 
-    <button class="btn red">Ban User</button>
-    <button class="btn dark">Nullify Password</button>
-    <button class="btn dark">Reset Sessions</button>
-    <button class="btn dark">Lock Account</button>
-    <button class="btn dark">Unverify User</button>
-    <button class= "btn dark">Verify User</button>
-  
-  </div>
+  <div class="divider"></div>
 
- <!-- Robux Manager -->
-<div class="panel">
-  <h2>Robux/Tix Manager</h2>
-
-  <button class="btn green">Add</button>
-  <button class="btn red">Remove</button>
-
-  <input type="number" class="input-box" placeholder="Enter amount">
-
-  <p style="margin-top: 15px; margin-bottom: 5px; font-size: 13px; color: #ccc;">
-    UserID/Username
-  </p>
-
-  <input type="text" class="input-box" placeholder="Enter UserID or Username">
+  <a href="#">Settings</a>
 </div>
-  
+
+<!-- MAIN CONTENT -->
+<div class="main">
+  <div class="container">
+
+    <!-- Account Actions -->
+    <div class="panel">
+      <h2>Account Actions</h2>
+
+      <button class="btn red">Ban User</button>
+      <button class="btn dark">Nullify Password</button>
+      <button class="btn dark">Reset Sessions</button>
+      <button class="btn dark">Lock Account</button>
+      <button class="btn dark">Unverify User</button>
+      <button class="btn dark">Verify User</button>
+    </div>
+
+    <!-- Robux Manager -->
+    <div class="panel">
+      <h2>Robux/Tix Manager</h2>
+
+      <button class="btn green">Add</button>
+      <button class="btn red">Remove</button>
+
+      <input type="number" class="input-box" placeholder="Enter amount">
+
+      <p style="margin-top: 15px; margin-bottom: 5px; font-size: 13px; color: #ccc;">
+        UserID/Username
+      </p>
+
+      <input type="text" class="input-box" placeholder="Enter UserID or Username">
+    </div>
+
+  </div>
+</div>
+
 </body>
 </html>
