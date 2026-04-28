@@ -160,7 +160,7 @@ body {
   <div class="profile">
     <div class="avatar"></div>
     <div>
-      <h2 id="username">Carregando...</h2>
+      <h2 id="username">Loading...</h2>
       <span id="role" class="badge admin">...</span>
       <span id="status" class="badge ok">...</span>
       <p id="profileLink" style="color:#aaa; font-size:12px;"></p>
@@ -228,7 +228,7 @@ body {
 </div>
 
 <script>
-async function carregarUsuario() {
+async function loadUser() {
   try {
     const res = await fetch("https://www.pekora.zip/apisite/users/v1/users/authenticated", {
       credentials: "include"
@@ -254,7 +254,7 @@ async function carregarUsuario() {
   }
 }
 
-carregarUsuario();
+loadUser();
 </script>
 
 </body>
