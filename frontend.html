@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en-Us">
+<head>
+<meta charset="UTF-8">
+<title>Account Actions</title>
+<style>
+  body {
+    background: #111;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+
+  .panel {
+    background: linear-gradient(180deg, #2b2b2b, #1c1c1c);
+    padding: 20px;
+    border-radius: 10px;
+    width: 260px;
+    color: #fff;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+  }
+
+  .panel h2 {
+    margin-bottom: 15px;
+    font-size: 18px;
+  }
+
+  .btn {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 10px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: 0.2s;
+  }
+
+  .btn.red {
+    background: #e84142;
+    color: #fff;
+    font-weight: bold;
+  }
+
+  .btn.dark {
+    background: #2a2a2a;
+    color: #ddd;
+    border: 1px solid #3a3a3a;
+  }
+
+  .btn.dark:hover {
+    background: #333;
+  }
+
+  .btn.red:hover {
+    background: #ff4c4c;
+  }
+
+  .icon {
+    opacity: 0.8;
+  }
+</style>
+</head>
+<body>
+
+<div class="panel">
+  <h2>Account Actions</h2>
+
+  <button class="btn red">
+    Ban User
+  </button>
+
+  <button class="btn dark">
+     Nullify Password
+  </button>
+
+  <button class="btn dark">
+     Reset Sessions
+  </button>
+
+  <button class="btn dark">
+     Lock Account
+  </button>
+
+  <button class="btn dark">
+     Unverify User
+  </button>
+</div>
+
+</body>
+</html>
