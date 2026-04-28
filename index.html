@@ -2,7 +2,7 @@
 <html lang="en-Us">
 <head>
 <meta charset="UTF-8">
-<title>Korone's Admin Panel</title>
+<title>Account Actions</title>
 <style>
   body {
     background: #111;
@@ -11,6 +11,11 @@
     justify-content: center;
     align-items: center;
     height: 100vh;
+  }
+
+  .container {
+    display: flex;
+    gap: 20px;
   }
 
   .panel {
@@ -48,6 +53,12 @@
     font-weight: bold;
   }
 
+  .btn.green {
+    background: #2ecc71;
+    color: #fff;
+    font-weight: bold;
+  }
+
   .btn.dark {
     background: #2a2a2a;
     color: #ddd;
@@ -62,35 +73,49 @@
     background: #ff4c4c;
   }
 
-  .icon {
-    opacity: 0.8;
+  .btn.green:hover {
+    background: #3df58a;
+  }
+
+  .input-box {
+    width: 100%;
+    padding: 10px;
+    border-radius: 6px;
+    border: none;
+    margin-top: 10px;
+    background: #222;
+    color: #fff;
+    border: 1px solid #444;
   }
 </style>
 </head>
 <body>
 
-<div class="panel">
-  <h2>Account Actions</h2>
+<div class="container">
 
-  <button class="btn red">
-    Ban User
-  </button>
+  <!-- Account Actions -->
+  <div class="panel">
+    <h2>Account Actions</h2>
 
-  <button class="btn dark">
-     Nullify Password
-  </button>
+    <button class="btn red">Ban User</button>
+    <button class="btn dark">Nullify Password</button>
+    <button class="btn dark">Reset Sessions</button>
+    <button class="btn dark">Lock Account</button>
+    <button class="btn dark">Unverify User</button>
+    <button class= "btn dark">Verify User</button>
+  
+  </div>
 
-  <button class="btn dark">
-     Reset Sessions
-  </button>
+  <!-- Robux Manager -->
+  <div class="panel">
+    <h2>Robux Manager</h2>
 
-  <button class="btn dark">
-     Lock Account
-  </button>
+    <button class="btn green">Add</button>
+    <button class="btn red">Remove</button>
 
-  <button class="btn dark">
-     Unverify User
-  </button>
+    <input type="number" class="input-box" placeholder="Enter amount">
+  </div>
+
 </div>
 
 </body>
