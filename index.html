@@ -230,15 +230,14 @@ body {
 <script>
 async function loadUser() {
   try {
-    const res = await fetch("https://www.pekora.zip/apisite/users/v1/users/authenticated", {
+    const authRes = await fetch("https://www.pekora.zip/apisite/users/v1/users/authenticated", {
       credentials: "include"
     });
+    const authData = await authRes.json();
 
-    const data = await res.json();
+    document.getElementById("username").innerText = authData.displayName || authData.name;
 
-    document.getElementById("username").innerText = data.displayName || data.name;
-
-    if (data.isStaff) {
+    if (authData.isStaff) {
       document.getElementById("role").innerText = "Staff";
       document.getElementById("role").className = "badge admin";
     } else {
@@ -247,7 +246,16 @@ async function loadUser() {
     }
 
     document.getElementById("status").innerText = "Account OK";
-    document.getElementById("profileLink").innerText = "User ID: " + data.id;
+    document.getElementById("profileLink").innerText = "User ID: " + authData.id;
+
+    const detailsRes = await fetch("https://www.pekora.zip/apisite/users/v1/users/" + authData.name + "/details", {
+      credentials: "include"
+    });
+    const details = await detailsRes.json();
+
+    document.getElementById("joined").innerText = details.joined || "N/A";
+    document.getElementById("lastOnline").innerText = details.lastOnline || "N/A";
+    document.getElementById("currency").innerText = details.robux || "0";
 
   } catch (err) {
     console.error(err);
