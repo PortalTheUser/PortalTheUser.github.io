@@ -160,10 +160,10 @@ body {
   <div class="profile">
     <div class="avatar"></div>
     <div>
-      <h2 id="username">Loading...</h2>
-      <span id="role" class="badge admin">...</span>
-      <span id="status" class="badge ok">...</span>
-      <p id="profileLink" style="color:#aaa; font-size:12px;"></p>
+      <h2>PortalTheUser</h2>
+      <span class="badge admin">Admin</span>
+      <span class="badge ok">Account OK</span>
+      <p style="color:#aaa; font-size:12px;">View ROBLOX Profile</p>
     </div>
   </div>
 
@@ -177,9 +177,9 @@ body {
       </div>
 
       <div class="info">
-        <div>Joined<br><b id="joined">N/A</b></div>
-        <div>Last Online<br><b id="lastOnline">N/A</b></div>
-        <div>Currency<br><b id="currency">0</b></div>
+        <div>Joined<br><b>4 months ago</b></div>
+        <div>Last Online<br><b>few seconds ago</b></div>
+        <div>Currency<br><b>2119 Robux</b></div>
       </div>
 
       <h2>Privacy Settings</h2>
@@ -226,44 +226,6 @@ body {
   </div>
 
 </div>
-
-<script>
-async function loadUser() {
-  try {
-    const authRes = await fetch("https://www.pekora.zip/apisite/users/v1/users/authenticated", {
-      credentials: "include"
-    });
-    const authData = await authRes.json();
-
-    document.getElementById("username").innerText = authData.displayName || authData.name;
-
-    if (authData.isStaff) {
-      document.getElementById("role").innerText = "Staff";
-      document.getElementById("role").className = "badge admin";
-    } else {
-      document.getElementById("role").innerText = "User";
-      document.getElementById("role").className = "badge ok";
-    }
-
-    document.getElementById("status").innerText = "Account OK";
-    document.getElementById("profileLink").innerText = "User ID: " + authData.id;
-
-    const detailsRes = await fetch("https://www.pekora.zip/apisite/users/v1/users/" + authData.name + "/details", {
-      credentials: "include"
-    });
-    const details = await detailsRes.json();
-
-    document.getElementById("joined").innerText = details.joined || "N/A";
-    document.getElementById("lastOnline").innerText = details.lastOnline || "N/A";
-    document.getElementById("currency").innerText = details.robux || "0";
-
-  } catch (err) {
-    console.error(err);
-  }
-}
-
-loadUser();
-</script>
 
 </body>
 </html>
