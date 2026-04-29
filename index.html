@@ -4,6 +4,15 @@
 <meta charset="UTF-8">
 <title>Korone's Admin Panel</title>
 
+<!-- CONFIGURAÇÃO PARA O DISCORD (EMBED) -->
+<meta property="og:title" content="PortalTheUser - Korone's Admin Panel">
+<meta property="og:description" content="Admin e Owner. Veja estatísticas de Robux, Tix e status da conta no painel oficial.">
+<meta property="og:url" content="https://github.io">
+<!-- IMPORTANTE: O link da imagem abaixo deve ser o link COMPLETO do seu site no GitHub -->
+<meta property="og:image" content="https://github.ioimg/y.png">
+<meta name="theme-color" content="#9370DB"> <!-- Cor roxa para combinar com a badge Owner -->
+<meta property="og:type" content="website">
+
 <style>
 body {
   margin: 0;
@@ -62,6 +71,8 @@ body {
   height: 70px;
   background: #333;
   border-radius: 10px;
+  object-fit: cover; /* Garante que a imagem não fique esticada */
+  border: 1px solid #444; /* Um pequeno contorno para destacar */
 }
 
 .badge {
@@ -142,6 +153,7 @@ body {
   border-radius: 6px;
   color: #fff;
   margin-top: 10px;
+  box-sizing: border-box; /* Evita que o input saia da caixa */
 }
 </style>
 </head>
@@ -177,13 +189,14 @@ body {
 
   <!-- PROFILE -->
   <div class="profile">
-    <img src="img/y.png" alt="Avatar" class="avatar">
+    <!-- Imagem configurada para a sua pasta img -->
+    <img src="img/y.png" alt="Avatar de PortalTheUser" class="avatar">
     <div>
-      <h2>PortalTheUser</h2>
+      <h2 style="margin: 0 0 5px 0;">PortalTheUser</h2>
       <span class="badge admin">Admin</span>
       <span class="badge owner">Owner</span>
       <span class="badge ok">Account OK</span>
-      <p style="color:#aaa; font-size:12px;">View ROBLOX Profile</p>
+      <p style="color:#aaa; font-size:12px; margin-top: 8px;">View ROBLOX Profile</p>
     </div>
   </div>
 
