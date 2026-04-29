@@ -80,6 +80,7 @@ body {
   border-radius: 6px;
   font-size: 12px;
   margin-right: 5px;
+  margin-top: 5px;
 }
 
 .admin { background: orange; }
@@ -155,6 +156,17 @@ body {
   margin-top: 10px;
   box-sizing: border-box; /* Evita que o input saia da caixa */
 }
+
+  .username {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.verified {
+  width: 16px;
+  height: 16px;
+}
 </style>
 </head>
 
@@ -193,10 +205,15 @@ body {
     <!-- Imagem configurada para a sua pasta img -->
     <img src="img/y.png" alt="Avatar de PortalTheUser" class="avatar">
     <div>
-      <h2 style="margin: 0 0 5px 0;">PortalTheUser</h2>
-      <span class="badge admin">Admin</span>
-      <span class="badge owner">Owner</span>
-      <span class="badge ok">Account OK</span>
+      <h2 style="margin: 0 0 5px 0;" class="username">
+  PortalTheUser
+  <img class="verified" src="img/RVB.png" alt="Verified">
+</h2>
+      <div class="badges">
+  <span class="badge admin">Admin</span>
+  <span class="badge owner">Owner</span>
+  <span class="badge ok">Account OK</span>
+</div>
       <p style="color:#aaa; font-size:12px; margin-top: 8px;">View ROBLOX Profile</p>
     </div>
   </div>
